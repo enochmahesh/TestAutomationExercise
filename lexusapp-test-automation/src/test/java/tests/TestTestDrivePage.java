@@ -66,12 +66,12 @@ public class TestTestDrivePage extends BaseTest {
         testDriverPage.testDriveOptions().click();
         testDriverPage.selectTestDriveOption().click();
         TestReport.logInfo("Test Drive Option selected.");
-        pause(2000);
+        pause(1000);
         testDriverPage.checkBoxLicense().click();
         testDriverPage.checkBoxTerms().click();
         testDriverPage.checkBoxPrivacy().click();
         TestReport.logInfo("All compulsory checkboxes ticked.");
-        pause(2000);
+        pause(3000);
         Assert.assertTrue((testDriverPage.submitButton().isEnabled()),"Submit button was not enabled.");
         TestReport.logPass("Form filling functionalities successfully verified.");
 
