@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite">
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter"/>
+    </listeners>
+    <test name="HomePageTest">
+        <classes>
+            <class name="tests.TestHomePage"/>
+        </classes>
+    </test>
+    <test name="TestDrivePageTest">
+        <classes>
+            <class name="tests.TestTestDrivePage"/>
+        </classes>
+    </test>
+</suite>
