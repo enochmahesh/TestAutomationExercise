@@ -1,6 +1,7 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.UXPage;
 import utilities.BaseTest;
@@ -11,9 +12,10 @@ public class TestHomePage extends BaseTest {
     private UXPage uxPage;
 
     @Test (priority=0)
+    @Parameters("browser")
     public void testBanner() throws InterruptedException {
         homePage=new HomePage(driver);
-        TestReport.startTest("Validation for Banner and Video Test");
+        TestReport.startTest("Validation for Banner and Video Test","Chrome","Enoch Mahesh","Smoke test");
         homePage.goToHomePage();
         if (homePage.getAcceptAlert().isDisplayed()){
             homePage.getAcceptAlert().click();

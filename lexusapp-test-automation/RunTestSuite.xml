@@ -4,11 +4,13 @@
         <listener class-name="org.testng.reporters.EmailableReporter"/>
     </listeners>
     <test name="HomePageTest">
+        <parameter name="browser" value="firefox"/>
         <classes>
             <class name="tests.TestHomePage"/>
         </classes>
     </test>
     <test name="TestDrivePageTest">
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="tests.TestTestDrivePage"/>
         </classes>

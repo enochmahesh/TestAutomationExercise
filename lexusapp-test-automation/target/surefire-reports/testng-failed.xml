@@ -12,6 +12,16 @@
           <include name="setUpSuite"/>
         </methods>
       </class> <!-- tests.TestTestDrivePage -->
+      <class name="tests.TestHomePage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDownMethod"/>
+          <include name="testVideo"/>
+          <include name="tearDown"/>
+          <include name="testBanner"/>
+          <include name="setUpSuite"/>
+        </methods>
+      </class> <!-- tests.TestHomePage -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->

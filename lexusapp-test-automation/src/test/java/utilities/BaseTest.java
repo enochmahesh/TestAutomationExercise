@@ -3,21 +3,32 @@ package utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 public class BaseTest {
     protected WebDriver driver;
-
     @BeforeClass
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    @Parameters("browser")
+    public void setUp(String browser) {
+        if ("chrome".equalsIgnoreCase(browser)) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        } else if ("firefox".equalsIgnoreCase(browser)) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+        } else if ("ie".equalsIgnoreCase(browser)) {
+            WebDriverManager.iedriver().setup();
+            driver = new InternetExplorerDriver();
+        } else {
+            throw new IllegalArgumentException("Unsupported browser: " + browser);
+        }
+
         driver.manage().window().maximize();
     }
+
 
     @AfterClass
     public void tearDown() {

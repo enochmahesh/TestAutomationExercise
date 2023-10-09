@@ -1,11 +1,9 @@
 package tests;
 
-import org.apache.hc.core5.util.Asserts;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.TestDriverPage;
 import testData.TestDriverData;
@@ -17,6 +15,7 @@ public class TestTestDrivePage extends BaseTest {
     private TestDriverPage testDriverPage;
 
     @Test
+    @Parameters("browser")
     public void testFormFunctionality() throws InterruptedException {
         testDriverPage=new TestDriverPage(driver);
         testDriverPage.goToTestDriverPage();
@@ -28,7 +27,7 @@ public class TestTestDrivePage extends BaseTest {
         else{
             Thread.sleep(1000);
         }
-        TestReport.startTest("Validation for form filling functionalities");
+        TestReport.startTest("Validation for form filling functionalities","Chrome","Enoch Mahesh","Smoke test");
 
         testDriverPage.firstName().sendKeys(TestDriverData.FIRST_NAME);
         TestReport.logInfo("First Name Filled");
@@ -71,6 +70,7 @@ public class TestTestDrivePage extends BaseTest {
         testDriverPage.checkBoxTerms().click();
         testDriverPage.checkBoxPrivacy().click();
         TestReport.logInfo("All compulsory checkboxes ticked.");
+        actions.scrollToElement(testDriverPage.testDriveOptions());
         pause(3000);
         Assert.assertTrue((testDriverPage.submitButton().isEnabled()),"Submit button was not enabled.");
         TestReport.logPass("Form filling functionalities successfully verified.");

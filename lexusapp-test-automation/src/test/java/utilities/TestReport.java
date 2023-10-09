@@ -16,8 +16,11 @@ public class TestReport {
         extent.attachReporter(sparkReporter);
     }
 
-    public static void startTest(String testName) {
-        test = extent.createTest(testName);
+    public static void startTest(String testName,String browser,String author,String category) {
+        test = extent.createTest(testName)
+                .assignAuthor(author)
+                .assignCategory(category)
+                .assignDevice(browser);;
     }
 
     public static void logInfo(String info) {
